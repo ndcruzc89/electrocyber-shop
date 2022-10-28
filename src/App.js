@@ -25,14 +25,14 @@ function App() {
           <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
               <Navbar.Brand>
-                <Link to={"/home"} className="nav-link">
+                <Link to={"/"} className="nav-link">
                   ElectroCyber-Shop
                 </Link>
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mx-auto">
-                  <Nav.Link to={"/home"} className="nav-link">Inicio</Nav.Link>
+                  <Nav.Link to={"/"} className="nav-link">Inicio</Nav.Link>
                   <Nav.Link to={"/about"} className="nav-link">Sobre Nosotros</Nav.Link>
                   <Nav.Link to={"/products"} className="nav-link">Productos</Nav.Link>
                   <Nav.Link to={"/contact"} className="nav-link">Contáctenos</Nav.Link>
@@ -40,7 +40,7 @@ function App() {
                 <Nav>
                   <Nav.Link to={"/login"} className="nav-link">Ingresar</Nav.Link>
                   <Nav.Link to={"/register"} className="nav-link">Registrarse</Nav.Link>
-                  <Nav.Link to={"/cart"} className="nav-link">Car</Nav.Link>
+                  <Nav.Link to={"/cart"} className="nav-link"><img src="../images/cart.svg" alt="cart"/></Nav.Link>
                 </Nav>
               </Navbar.Collapse>
             </Container>
