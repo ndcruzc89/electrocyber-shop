@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Nav, Navbar, Container, Button } from "react-bootstrap";
+import { Container, Nav, Navbar, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import "./navbar.css";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faUserSecret } from "@fortawesome/free-solid-svg-icons";
 
@@ -15,7 +16,7 @@ export default class NavBar extends Component {
         <Container>
           <Navbar.Brand>
             <NavLink to="/" className="nav-link">
-              ElectroCyber-Shop
+              <span id="logo">ElectroCyber-Shop</span>
             </NavLink>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
