@@ -12,7 +12,7 @@ export default class NavBar extends Component {
   }
   render() {
     return (
-      <Navbar fixed="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
           <Navbar.Brand>
             <NavLink to="/" className="nav-link">
@@ -47,7 +47,7 @@ export default class NavBar extends Component {
                 </Button>
               </NavLink>
               <NavLink to="/cart" className="nav-link">
-                <i className="bi bi-cart"></i>
+                <i className="bi bi-cart fs-5"></i>
               </NavLink>
             </Nav>
           </Navbar.Collapse>
