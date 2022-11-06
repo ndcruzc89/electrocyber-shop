@@ -1,0 +1,18 @@
+.container-home {
+    width: 50%;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+}
+
+.row-home {
+    padding-top: 5rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px ridge;
+}
+
+.img-home {
+    object-fit: contain;
+    width: 200px;
+    height: 200px;
+}
+

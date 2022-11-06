@@ -3,8 +3,6 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import "./hero.css";
 
-// import electronicImage from "../../assets/images/electronic_components2.jpg"
-
 export default class Hero extends Component {
     constructor(props) {
       super(props);
