@@ -1,0 +1,23 @@
+.hero {
+    background-image: url("../../assets/images/electronic_components2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    resize: both;
+    text-align: center;
+    min-width: 100vw;
+    min-height: 70vh;
+}
+
+.hero-content {
+    padding-top: 15rem;
+    padding-bottom: 2rem;
+}
+
+.hero-title {
+    color: #001A49;
+}
+
+.hero__paragraph {
+    letter-spacing: 1.5px;
+}

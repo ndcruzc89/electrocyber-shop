@@ -1,5 +1,9 @@
 import React, { Component } from "react";
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Link } from "react-router-dom";
+import "./hero.css";
+
+// import electronicImage from "../../assets/images/electronic_components2.jpg"
 
 export default class Hero extends Component {
     constructor(props) {
@@ -8,9 +12,33 @@ export default class Hero extends Component {
     }
     render() { 
         return (
-            <Container >
-                <img src="../../assets/images/electronic_components2.jpg" alt="img-hero"/>
-            </Container>
+            <div className="hero">
+              <Container className="hero-content">
+                <Row className="mb-2">
+                  <Col  xs={4}>
+                    <h1 className="hero-title">Un mundo de electrónica al alcance de tu hogar!</h1>
+                  </Col>
+                </Row>
+                <Row className="mb-2">
+                  <Col  xs={4}>
+                    <p className="hero__paragraph">ElectroCyber-Shop tiene para ti los mejores productos de electrónica y también las mejores soluciones para tus proyectos.  </p>
+                  </Col>
+                </Row>
+                <Row >
+                  <Col  xs={4}>
+                    <Link to="/products" className="nav-link">
+                      <Button variant="primary" type="submit">
+                        Ver Productos
+                      </Button>
+                    </Link>
+                  </Col>
+                </Row>
+
+
+              </Container>
+                
+                
+            </div>
           );
     }
 }

@@ -8,7 +8,7 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./footer.css";
 
 export default class Footer extends Component {
@@ -21,7 +21,7 @@ export default class Footer extends Component {
     return (
       <div
         id="footer"
-        className="bg-dark text-white w-100 position-absolute bottom-0"
+        className="bg-dark text-white w-100 position-sticky bottom-0"
       >
         <Container>
           <Row>
@@ -71,25 +71,45 @@ export default class Footer extends Component {
           <hr></hr>
           <Row className="mb-2">
             <Col className="d-flex justify-content-center">
-                <Link to="https://es-la.facebook.com" className="nav-link me-3">
-                    <i className="bi bi-facebook fs-4"></i>
-                </Link>
-                <Link to="https://twitter.com/?lang=es" className="nav-link me-3">
-                    <i className="bi bi-twitter fs-4"></i>
-                </Link>
-                <Link to="https://www.instagram.com" className="nav-link me-3">
-                    <i className="bi bi-instagram fs-4"></i>
-                </Link>
-                <Link to="https://www.youtube.com" className="nav-link me-3">
-                    <i className="bi bi-youtube fs-4"></i>
-                </Link>
+              <a
+                href="https://es-la.facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link me-3"
+              >
+                <i className="bi bi-facebook fs-4"></i>
+              </a>
+              <a
+                href="https://twitter.com/?lang=es"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link me-3"
+              >
+                <i className="bi bi-twitter fs-4"></i>
+              </a>
+              <a
+                href="https://www.instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link me-3"
+              >
+                <i className="bi bi-instagram fs-4"></i>
+              </a>
+              <a
+                href="https://www.youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link me-3"
+              >
+                <i className="bi bi-youtube fs-4"></i>
+              </a>
             </Col>
           </Row>
           <Row>
             <Col className="text-center">
-                <span className="text-muted">
+              <span className="text-muted">
                 Nelson Cruz &copy; All Rights Reserved
-                </span>
+              </span>
             </Col>
           </Row>
         </Container>
