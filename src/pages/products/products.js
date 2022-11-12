@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import { Container, Row, Col} from "react-bootstrap";
+import "./products.css";
+
+import ProductCard  from  "../../components/product_card/product_card"
 
 export default class Products extends Component {
     constructor(props) {
@@ -8,9 +12,15 @@ export default class Products extends Component {
 
     render() {
         return (
-            <div style={{marginTop: 200}}>
-                <h3>Esta es la pagina de Products</h3>
-            </div>
+            <Container className="container-products">
+                <h2>Productos</h2>
+                <Row>
+                    <Col>
+                        <ProductCard/>
+                    </Col>
+                </Row>
+           
+          </Container>
         );
     }
 }

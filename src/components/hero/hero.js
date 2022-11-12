@@ -31,8 +31,6 @@ export default class Hero extends Component {
                     </Link>
                   </Col>
                 </Row>
-
-
               </Container>
                 
                 
