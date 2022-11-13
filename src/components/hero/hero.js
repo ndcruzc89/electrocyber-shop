@@ -24,9 +24,9 @@ export default class Hero extends Component {
                 </Row>
                 <Row >
                   <Col  xs={4}>
-                    <Link to="/products" className="nav-link">
+                    <Link to="/register" className="nav-link">
                       <Button variant="primary" type="submit">
-                        Ver Productos
+                        Regístrarse
                       </Button>
                     </Link>
                   </Col>

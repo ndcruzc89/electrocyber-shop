@@ -1,0 +1,29 @@
+.register-container {
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+}
+
+.register-img {
+    background-image: url("../../assets/images/registrarse_img.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.register-col {
+    border: 1px solid #e0e0e0;
+}
+
+.register-col-left {  
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.register-col-right {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.register-title {
+    color: #001A49;
+}
