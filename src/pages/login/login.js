@@ -34,15 +34,17 @@ export default class Login extends Component {
   render() {
     return (
       <main>
-        <Container className="login-container">
-          <Row>
-            <Col sm="12" xs="12" md={{ span: 4, offset: 4 }}>
+        <Container className="login-container ">
+          <Row className="d-flex justify-content-center">
+            <Col sm="12" xs="12" md="4" className="login-img login-col login-col-left">
+            </Col>
+            <Col md="4" className="login-col login-col-right">
               <Row>
-                <h2 className="text-center login-title">Iniciar Sesión</h2>
+                <h2 className="text-center login-title mt-5">Iniciar Sesión</h2>
               </Row>
               <Row>
-                <Form onSubmit={this.onSubmit}>
-                  <Form.Group className="mb-3 mt-5" controlId="formBasicUser">
+                <Form onSubmit={this.onSubmit} className="px-5">
+                  <Form.Group className="mb-3 mt-4" controlId="formBasicUser">
                     <Form.Label>Email</Form.Label>
                     <Form.Control
                       type="email"
@@ -52,7 +54,7 @@ export default class Login extends Component {
                     />
                   </Form.Group>
                   <Form.Group
-                    className="mb-3 mt-3"
+                    className="mb-3"
                     controlId="formBasicPassword"
                   >
                     <Form.Label>Contraseña</Form.Label>
@@ -64,13 +66,13 @@ export default class Login extends Component {
                     />
                   </Form.Group>
                   <Form.Group
-                    className="mb-3 mt-3"
+                    className="mb-3"
                     controlId="formBasicCheckbox"
                   >
                     <Form.Check type="checkbox" label="Recordar" />
                   </Form.Group>
                   <Button
-                    className="w-100 mt-4"
+                    className="w-100 mt-3 mb-5"
                     variant="primary"
                     type="submit"
                   >

@@ -1,6 +1,28 @@
 .login-container {
     margin-top: 15rem;
     margin-bottom: 10rem;
+
+}
+
+.login-img {
+    background-image: url("../../assets/images/login_img.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.login-col {
+    border: 1px solid #e0e0e0;
+}
+
+.login-col-left {  
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.login-col-right {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .login-title {
