@@ -1,0 +1,22 @@
+.cart-container {
+    margin-top: 15rem;
+    margin-bottom: 10rem;
+}
+
+.img-cart {
+    width: 120px;
+}
+
+.text-name {
+    color: #f58a07;
+    font-weight: 800;
+}
+
+#inputCartQuantity {
+    max-width: 4rem;
+}
+
+.btn-quantity {
+    background-color: #654321;
+    border: #654321;
+}

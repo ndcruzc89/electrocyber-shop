@@ -59,7 +59,7 @@ export default class Contact extends Component {
                 <h2 className="text-center contact-title mt-5">Contacto</h2>
                 <Form onSubmit={this.onSubmit} className="px-5">
                   <Form.Group
-                    className="mb-3 mt-4"
+                    className="mb-3 mt-5"
                     controlId="inputContactName"
                   >
                     <Form.Label>Nombre</Form.Label>
