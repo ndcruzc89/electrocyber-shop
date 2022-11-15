@@ -2,3 +2,11 @@
     margin-top: 5rem;
     margin-bottom: 4rem;
 }
+
+.product-name {
+    color: #252850;
+}
+
+.product-price {
+    background-color: #f58a07 ;
+}

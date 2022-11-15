@@ -57,7 +57,7 @@ export default class Contact extends Component {
             <Row>
               <Col sm="12" xs="12" md={{ span: 4, offset: 4 }} className="contact-col">
                 <h2 className="text-center contact-title mt-5">Contacto</h2>
-                <Form onSubmit={this.onSubmit} className="px-5">
+                <Form onSubmit={this.onSubmit} className="px-4">
                   <Form.Group
                     className="mb-3 mt-5"
                     controlId="inputContactName"

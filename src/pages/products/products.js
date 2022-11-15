@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Col, Card, Badge, Button } from "react-bootstrap";
 import "./products.css";
 
 import Hero from "../../components/hero/hero";
@@ -22,17 +22,23 @@ export default class Products extends Component {
             <h2>Productos</h2>
             <Row>
               {productData.map((item) => (
-                <Col sm="4">
-                  <Card key={item.id} className="me-4">
-                    <Card.Img variant="top" src={item.img} />
+                <Col sm="3">
+                  <Card key={item.id} className="mt-4 mb-4 me-3">
+                    <Card.Img
+                      variant="top"
+                      src={item.img}
+                      className="img-fluid"
+                    />
                     <Card.Body>
-                      <Card.Title>{item.name}</Card.Title>
+                      <Card.Title className="product-name">{item.name}</Card.Title>
                       <Card.Text>{item.description}</Card.Text>
                       <Card.Text>
-                        {item.price}
-                        <span> { item.currency }</span>
+                        <Badge pill bg="" className="product-price">
+                          {item.price}
+                          <span> {item.currency}</span>
+                        </Badge>
                       </Card.Text>
-                      <Button variant="primary">Añadir al carrito</Button>
+                      <Button variant="dark">Añadir al carrito</Button>
                     </Card.Body>
                   </Card>
                 </Col>

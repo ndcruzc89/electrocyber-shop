@@ -7,16 +7,16 @@
     width: 120px;
 }
 
-.text-name {
+.cart-product-name {
     color: #f58a07;
-    font-weight: 800;
+    font-weight: 500;
 }
 
 #inputCartQuantity {
     max-width: 4rem;
 }
 
-.btn-quantity {
-    background-color: #654321;
-    border: #654321;
+.cart-total {
+    background-color: #f58a07 ;
 }
+

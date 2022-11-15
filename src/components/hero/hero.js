@@ -19,7 +19,7 @@ export default class Hero extends Component {
                 </Row>
                 <Row className="mb-2">
                   <Col  xs={4}>
-                    <p className="hero__paragraph">ElectroCyber-Shop tiene para ti los mejores productos de electrónica y también las mejores soluciones para tus proyectos.  </p>
+                    <p className="hero-paragraph">ElectroCyber-Shop tiene para ti los mejores productos de electrónica y también las mejores soluciones para tus proyectos.  </p>
                   </Col>
                 </Row>
                 <Row >

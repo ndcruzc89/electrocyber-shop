@@ -63,7 +63,7 @@ export default class Register extends Component {
               className="register-col register-col-left"
             >
               <h2 className="text-center register-title mt-5">Regístrarse</h2>
-              <Form onSubmit={this.onSubmit} className="px-5">
+              <Form onSubmit={this.onSubmit} className="px-4">
                 <Row>
                   <Col sm="6">
                     <Form.Group className="mb-3 mt-4" controlId="inputRegisterName">
