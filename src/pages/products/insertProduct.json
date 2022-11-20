@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Arduino Nano",
+        "img": "https://res.cloudinary.com/dfrcly3l5/image/upload/v1668818636/arduino/arduino_nano_d3jgfi.webp",
+        "description": "Es una pequeña y completa placa basada en el ATmega328 o el ATmega168 en sus versiones anteriores, posee 13 pines de E/S digital y 7 pines de entrada analógica. Esta placa utiliza un cable Mini B-USB en lugar de uno normal.",
+        "price": 39000,
+        "currency": "COP"
+    },
+    {
+        "name": "Arduino Pro Micro",
+        "img": "https://res.cloudinary.com/dfrcly3l5/image/upload/v1668818634/arduino/arduino_micro_duvyit.webp",
+        "description": "Esta pequeña placa tiene todas las capacidades de arduino: 4 canales de ADC de 10 bits, 5 pines PWM, 12 pines digitales, conexiones en serie de hardware Rx y Tx, y funciona a 16 MHz y 5 V. Además, cuenta con un regulador de tensión.",
+        "price": 45000,
+        "currency": "COP"
+    },
+    {
+        "name": "Arduino Leonardo",
+        "img": "https://res.cloudinary.com/dfrcly3l5/image/upload/v1668818634/arduino/arduino_leonardo_n0auuh.webp",
+        "description": "Es una placa basada en el ATmega32u4, que posee 20 pines de E/S digital (7 salidas PWM y 12 entradas analógicas) y cuenta con un oscilador de cristal de 16 Mhz, una conexión micro usb, una entrada eléctrica, un header ICSP y un botón de reset.",
+        "price": 59000,
+        "currency": "COP"
+    },
+    {
+        "name": "Arduino Uno",
+        "img": "https://res.cloudinary.com/dfrcly3l5/image/upload/v1668818636/arduino/arduino_uno_znqais.webp",
+        "description": "Es una placa basada en el ATmega328P, que posee 14 pines de E/S digital (6 pines PWM y 6 entradas analógicas) y también cuenta un cristal de cuarzo de 16MHz, conexión a usb, puerto de electricidad, un header ISCP y un botón de reinicio.",
+        "price": 65000,
+        "currency": "COP"
+    },
+    {
+        "name": "Arduino Mega 2560 ADK",
+        "img": "https://res.cloudinary.com/dfrcly3l5/image/upload/v1668818634/arduino/arduino_mega_2560_arulg0.webp",
+        "description": "Es una placa basada en el ATmega2560, que posee 54 pines de E/S digital (15 salidas PWM y 16 pines de entrada analógica) y cuenta con 4 puertos seriales de hardware (UARTs), un oscilador de cristal de 16MHz, conexión usb, puerto de electricidad y un header ICSP.",
+        "price": 150000,
+        "currency": "COP"
+    },
+    {
+        "name": "Arduino Fio",
+        "img": "https://res.cloudinary.com/dfrcly3l5/image/upload/v1668818634/arduino/arduino_fio_fe1f3f.webp",
+        "description": "Es una placa basada en el ATmega328P, tiene 14 pines de E/S digitales (6 salidas PWM y 8 entradas analógicas), tiene conexiones para una batería de litio e incluye un circuito de carga a través de USB. En el reverso de la placa tiene disponible un zócalo para módulos XBee.",
+        "price": 165000,
+        "currency": "COP"
+    },
+    {
+        "name": "Arduino Mega ADK",
+        "img": "https://res.cloudinary.com/dfrcly3l5/image/upload/v1668818634/arduino/arduino_mega_adk_zfrpsl.webp",
+        "description": "Es una placa basada en el Atmega2560, cuenta con 54 pines digitales de E/S (14 salidas PWM y 16 entradas analógicas), cuenta con 4 UARTs, un oscilador de 16MHz, una conexión USB, un conector de alimentación, una cabecera ICSP, y un botón de reinicio.",
+        "price": 257000,
+        "currency": "COP"
+    },
+    {
+        "name": "Arduino Yun",
+        "img": "https://res.cloudinary.com/dfrcly3l5/image/upload/v1668818637/arduino/arduino_yun_noz1ex.png",
+        "description": "Es una board basada en el ATMEGA32U4 y el Atheros AR9331. La board soporta Ethernet y WiFi, cuenta con un puerto USB, slot para tarjeta micro-SD y 20 pines digitales I/O (7 salidas PWM y 12 entradas análogas), un cristal de 16 Mhz, conexión micro USB, conector ICSP y 3 botones de Reset.",
+        "price": 299000,
+        "currency": "COP"
+    }
+]

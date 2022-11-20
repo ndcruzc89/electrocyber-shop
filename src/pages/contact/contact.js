@@ -49,9 +49,9 @@ export default class Contact extends Component {
   render() {
     return (
       <>
-        <hero>
+        <header>
           <Hero />
-        </hero>
+        </header>
         <main>
           <Container className="contact-container">
             <Row>

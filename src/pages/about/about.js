@@ -13,9 +13,9 @@ export default class About extends Component {
   render() {
     return (
       <>
-        <hero>
+        <header>
           <Hero />
-        </hero>
+        </header>
         <main>
           <Container className="about-container">
             <Row className="row-content">

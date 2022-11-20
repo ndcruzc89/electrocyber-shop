@@ -67,26 +67,28 @@ export default class Home extends Component {
     ];
     return (
       <>
-        <hero>
+        <header>
           <Hero />
-        </hero>
+        </header>
         <main>
           <Container className="home-container">
-            {homeData.map((item) => (
-              <Row className="row-home">
-                <Col className="d-flex justify-content-center ">
-                  <img
-                    className={item.classnameImg}
-                    src={item.srcImg}
-                    alt={item.altImg}
-                  ></img>
-                  <div className={item.classnameText}>
-                    <h2 className="mb-3">{item.subtitle}</h2>
-                    <p className="home-paragraph">{item.paragraph}</p>
-                  </div>
-                </Col>
-              </Row>
-            ))}{" "}
+            {React.Children.toArray(
+              homeData.map((item) => (
+                <Row className="row-home">
+                  <Col className="d-flex justify-content-center ">
+                    <img
+                      className={item.classnameImg}
+                      src={item.srcImg}
+                      alt={item.altImg}
+                    ></img>
+                    <div className={item.classnameText}>
+                      <h2 className="mb-3">{item.subtitle}</h2>
+                      <p className="home-paragraph">{item.paragraph}</p>
+                    </div>
+                  </Col>
+                </Row>
+              ))
+            )}{" "}
             ;
           </Container>
         </main>
