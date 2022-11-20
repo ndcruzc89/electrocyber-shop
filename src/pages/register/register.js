@@ -1,31 +1,33 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "./register.css";
+import axios from "axios";
 
 export default class Register extends Component {
   constructor(props) {
     super(props);
-    this.onChangeRegisterName = this.onChangeRegisterName.bind(this);
-    this.onChangeRegisterSurname = this.onChangeRegisterSurname.bind(this);
+    this.onChangeRegisterFirstName = this.onChangeRegisterFirstName.bind(this);
+    this.onChangeRegisterLastName = this.onChangeRegisterLastName.bind(this);
     this.onChangeRegisterEmail = this.onChangeRegisterEmail.bind(this);
     this.onChangeRegisterPass = this.onChangeRegisterPass.bind(this);
     this.onChangeRegisterRepass = this.onChangeRegisterRepass.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      name: "",
-      surname: "",
+      firstName: "",
+      lastName: "",
       email: "",
       pass: "",
-      repass: "",
+      repass: ""
     };
   }
 
-  onChangeRegisterName(e) {
-    this.setState({ name: e.target.value });
+  onChangeRegisterFirstName(e) {
+    this.setState({ firstName: e.target.value });
   }
 
-  onChangeRegisterSurname(e) {
-    this.setState({ surname: e.target.value });
+  onChangeRegisterLastName(e) {
+    this.setState({ lastName: e.target.value });
   }
 
   onChangeRegisterEmail(e) {
@@ -43,12 +45,16 @@ export default class Register extends Component {
   onSubmit(e) {
     e.preventDefault();
     const registerObject = {
-      name: this.state.name,
-      surname: this.state.surname,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
       email: this.state.email,
       pass: this.state.pass,
-      repass: this.state.repass,
     };
+
+    axios
+    .post("http://localhost:4000/users/create-user", registerObject)
+    .then((res) => console.log(res.data));
+  this.setState({ firstName: "", lastName: "", email: "", pass: "", repass: ""});
   }
 
   render() {
@@ -70,8 +76,8 @@ export default class Register extends Component {
                       <Form.Label>Nombre</Form.Label>
                       <Form.Control
                         type="text"
-                        value={this.state.name}
-                        onChange={this.onChangeRegisterName}
+                        value={this.state.firstName}
+                        onChange={this.onChangeRegisterFirstName}
                         placeholder="Ingresa tu nombre"
                       />
                     </Form.Group>
@@ -81,8 +87,8 @@ export default class Register extends Component {
                       <Form.Label>Apellido</Form.Label>
                       <Form.Control
                         type="text"
-                        value={this.state.surname}
-                        onChange={this.onChangeRegisterSurname}
+                        value={this.state.lastName}
+                        onChange={this.onChangeRegisterLastName}
                         placeholder="Ingresa tu apellido"
                       />
                     </Form.Group>

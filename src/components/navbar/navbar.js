@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Nav, Navbar, Button } from "react-bootstrap";
+import { Container, Nav, Navbar, NavDropdown, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import "./navbar.css";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,7 +10,46 @@ export default class NavBar extends Component {
     super(props);
     this.state = {};
   }
+
+  logout(e) {
+    e.preventDefault();
+    localStorage.removeItem("utoken");
+    this.props.history.push("/");
+  }
+
   render() {
+    const loginRegLink = (
+      <Nav className="d-flex align-items-center">
+        <NavLink to="/login" className="nav-link">
+          <Button variant="outline-primary" className="me-1 text-white">
+            Ingresar
+          </Button>
+        </NavLink>
+        <NavLink to="/register" className="nav-link">
+          <Button variant="primary" className="me-1">
+            Registrarse
+          </Button>
+        </NavLink>
+        <NavLink to="/cart" className="nav-link">
+          <i className="bi bi-cart fs-5"></i>
+        </NavLink>
+      </Nav>
+    );
+
+    const userLink = (
+      <Nav className="d-flex align-items-center">
+        {/* <i className="bi bi-person-circle fs-5 me-1"></i> */}
+        <NavDropdown title="Mi cuenta" id="account-dropdown">
+          <NavDropdown.Item href="" onClick={this.logout.bind(this)}>
+            Cerrar Sesión
+          </NavDropdown.Item>
+        </NavDropdown>
+        <NavLink to="/cart" className="nav-link">
+          <i className="bi bi-cart fs-5"></i>
+        </NavLink>
+      </Nav>
+    );
+
     return (
       <nav>
         <Navbar
@@ -42,21 +81,7 @@ export default class NavBar extends Component {
                   Contáctenos
                 </NavLink>
               </Nav>
-              <Nav className="d-flex align-items-center">
-                <NavLink to="/login" className="nav-link">
-                  <Button variant="outline-primary" className="me-1 text-white">
-                    Ingresar
-                  </Button>
-                </NavLink>
-                <NavLink to="/register" className="nav-link">
-                  <Button variant="primary" className="me-1">
-                    Registrarse
-                  </Button>
-                </NavLink>
-                <NavLink to="/cart" className="nav-link">
-                  <i className="bi bi-cart fs-5"></i>
-                </NavLink>
-              </Nav>
+              {localStorage.utoken ? userLink : loginRegLink}
             </Navbar.Collapse>
           </Container>
         </Navbar>

@@ -2,11 +2,11 @@ let express = require("express"),
   router = express.Router();
 
 // Modelo Producto
-let productSchema = require("../models/Product");
+let userSchema = require("../models/User");
 
-// Obtener la lista de Productos
+// Obtener la lista de Usuarios
 router.route("/").get((req, res, next) => {
-  productSchema.find((error, data) => {
+  userSchema.find((error, data) => {
     if (error) {
       return next(error);
     } else {
@@ -15,9 +15,9 @@ router.route("/").get((req, res, next) => {
   });
 });
 
-// Obtener un Producto
-router.route("/get-product/:id").get((req, res, next) => {
-  productSchema.findById(req.params.id, (error, data) => {
+// Obtener un Usuario
+router.route("/get-user/:id").get((req, res, next) => {
+  userSchema.findById(req.params.id, (error, data) => {
     if (error) {
       return next(error);
     } else {
@@ -26,9 +26,9 @@ router.route("/get-product/:id").get((req, res, next) => {
   });
 });
 
-// Crear un Producto
-router.route("/create-product").post((req, res, next) => {
-  productSchema.create(req.body, (error, data) => {
+// Crear un Usuario
+router.route("/create-user").post((req, res, next) => {
+  userSchema.create(req.body, (error, data) => {
     if (error) {
       return next(error);
     } else {
@@ -38,9 +38,9 @@ router.route("/create-product").post((req, res, next) => {
   });
 });
 
-// Actualizar un Producto
-router.route("/update-product/:id").put((req, res, next) => {
-  productSchema.findByIdAndUpdate(
+// Actualizar un Usuario
+router.route("/update-user/:id").put((req, res, next) => {
+  userSchema.findByIdAndUpdate(
     req.params.id,
     {
       $set: req.body,
@@ -51,15 +51,15 @@ router.route("/update-product/:id").put((req, res, next) => {
         return next(error);
       } else {
         res.json(data);
-        console.log("Producto actualizado con éxito!");
+        console.log("Usuario actualizado con éxito!");
       }
     }
   );
 });
 
-// Eliminar un Producto
-router.route("/delete-product/:id").delete((req, res, next) => {
-  productSchema.findByIdAndRemove(req.params.id, (error, data) => {
+// Eliminar un Usuario
+router.route("/delete-user/:id").delete((req, res, next) => {
+  userSchema.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {
       return next(error);
     } else {
