@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import "./register.css";
 import axios from "axios";
-import { ErrorResponse } from "@remix-run/router";
 
 export default class Register extends Component {
   constructor(props) {
@@ -34,13 +33,12 @@ export default class Register extends Component {
         pass: false,
         repass: false,
       },
+      formValid: false,
+      alert: {
+        alertMessage: "",
+        alertVariant: "",
+      },
     };
-
-    // this.expresiones = {
-    //   text: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
-    //   email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-    //   pass: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/
-    // }
   }
 
   onChangeRegisterFirstName(e) {
@@ -62,14 +60,6 @@ export default class Register extends Component {
   onChangeRegisterRepass(e) {
     this.setState({ repass: e.target.value });
   }
-
-  // handleInputValidation = () => {
-  //   const { isInputValid, errorMessage } = this.validateInput();
-  //   this.setState({
-  //     isInputValid: isInputValid,
-  //     errorMessage: errorMessage,
-  //   });
-  // };
 
   handleInput = (e) => {
     const name = e.target.name;
@@ -111,9 +101,9 @@ export default class Register extends Component {
           : "La contraseña debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula";
         break;
       case "inputRepass":
-        fieldValid.repass = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/.test(
-          value
-        ) && value === this.state.pass;
+        fieldValid.repass =
+          /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/.test(value) &&
+          value === this.state.pass;
         fieldError.repass = fieldValid.repass
           ? ""
           : "Las contraseñas deben ser iguales";
@@ -122,8 +112,19 @@ export default class Register extends Component {
         break;
     }
     this.setState(
-      {inputError: fieldError,
-      inputValid: fieldValid
+      { inputError: fieldError, inputValid: fieldValid },
+      this.validateForm
+    );
+  }
+
+  validateForm() {
+    this.setState({
+      formValid:
+        this.state.inputValid.firstName &&
+        this.state.inputValid.lastName &&
+        this.state.inputValid.email &&
+        this.state.inputValid.pass &&
+        this.state.inputValid.repass,
     });
   }
 
@@ -138,14 +139,45 @@ export default class Register extends Component {
 
     axios
       .post("http://localhost:4000/users/create-user", registerObject)
-      .then((res) => console.log(res.data));
-    this.setState({
-      firstName: "",
-      lastName: "",
-      email: "",
-      pass: "",
-      repass: "",
-    });
+      .then((res) => {
+        console.log(res.data);
+        this.setState({
+          firstName: "",
+          lastName: "",
+          email: "",
+          pass: "",
+          repass: "",
+          alert: {
+            alertMessage: "Formulario enviado con éxito",
+            alertVariant: "success",
+          },
+        });
+        setTimeout(() => {
+          this.setState({
+            alert: {
+              alertMessage: "",
+              alertVariant: "",
+            },
+          })
+        }, 5000);
+      })
+      .catch((error) => {
+        console.log(error);
+        this.setState({
+          alert: {
+            alertMessage: "Campos inválidos o correo ya registrado",
+            alertVariant: "danger",
+          },
+        });
+        setTimeout(() => {
+          this.setState({
+            alert: {
+              alertMessage: "",
+              alertVariant: "",
+            },
+          })
+        }, 5000);
+      });
   }
 
   render() {
@@ -261,9 +293,13 @@ export default class Register extends Component {
                       className="w-100 mt-3 mb-5"
                       variant="primary"
                       type="submit"
+                      disabled={!this.state.formValid}
                     >
                       Regístrarse
                     </Button>
+                  </Col>
+                  <Col sm="12">
+                    <Alert variant={this.state.alert.alertVariant}>{this.state.alert.alertMessage}</Alert>
                   </Col>
                 </Row>
               </Form>
