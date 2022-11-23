@@ -1,5 +1,8 @@
-let express = require("express"),
-  router = express.Router();
+let express = require("express");
+let router = express.Router();
+let jwt = require("jsonwebtoken");
+let bcrypt = require("bcryptjs");
+const cors = require("cors");
 
 // Modelo Producto
 let userSchema = require("../models/User");
@@ -24,6 +27,39 @@ router.route("/get-user/:id").get((req, res, next) => {
       res.json(data);
     }
   });
+});
+
+// Login Usuario
+router.route("/login").post((req, res) => {
+  userSchema
+    .findOne({ email: req.body.email })
+    .then((user) => {
+      if (user) {
+        console.log(req.body.pass);
+        console.log(user.pass);
+
+        if (req.body.pass === user.pass) {
+          const payload = {
+            _id: user._id,
+            first_name: user.firstName,
+            last_name: user.lastName,
+            email: user.email,
+          };
+          let token = jwt.sign(payload, "secret", {
+            expiresIn: 1440,
+          });
+
+          res.status(200).json({ msg: "Login exitoso", token: token });
+        } else {
+          res.status(400).json({ msg: "Credenciales inválidas" });
+        }
+      } else {
+        res.status(400).json({ msg: "El usuario no existe" });
+      }
+    })
+    .catch((err) => {
+      res.status(400).json({ msg: err });
+    });
 });
 
 // Crear un Usuario

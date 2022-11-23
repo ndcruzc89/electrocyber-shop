@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import "./login.css";
+import axios from "axios";
 
 export default class Login extends Component {
   constructor(props) {
@@ -8,10 +9,15 @@ export default class Login extends Component {
 
     this.onChangeLoginEmail = this.onChangeLoginEmail.bind(this);
     this.onChangeLoginPass = this.onChangeLoginPass.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       email: "",
       pass: "",
+      alert: {
+        alertMessage: "",
+        alertVariant: "",
+      },
     };
   }
 
@@ -25,10 +31,68 @@ export default class Login extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const loginObject = {
+
+    const user = {
       email: this.state.email,
       pass: this.state.pass,
     };
+
+    if (!user.email || !user.pass) {
+      console.log("Digite dados válidos!");
+      this.setState({
+        alert: {
+          alertMessage: "Complete todos los campos correctamente",
+          alertVariant: "danger",
+        },
+      });
+      setTimeout(() => {
+        this.setState({
+          alert: {
+            alertMessage: "",
+            alertVariant: "",
+          },
+        });
+      }, 5000);
+    } else {
+      axios
+        .post("http://localhost:4000/users/login", user)
+        .then((res) => {
+          localStorage.setItem("utoken", res.data);
+          this.setState({
+            alert: {
+              alertMessage: "Login exitoso",
+              alertVariant: "success",
+            },
+          });
+          setTimeout(() => {
+            this.setState({
+              alert: {
+                alertMessage: "",
+                alertVariant: "",
+              },
+            });
+          }, 5000);
+          this.props.history.push("/");
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+          let errorMessage = JSON.parse(JSON.stringify(err.response.data));
+          this.setState({
+            alert: {
+              alertMessage: "Error: " + errorMessage.err,
+              alertVariant: "danger",
+            },
+          });
+          setTimeout(() => {
+            this.setState({
+              alert: {
+                alertMessage: "",
+                alertVariant: "",
+              },
+            });
+          }, 5000);
+        });
+    }
   }
 
   render() {
@@ -49,18 +113,20 @@ export default class Login extends Component {
                   <Form.Label>Email</Form.Label>
                   <Form.Control
                     type="email"
+                    name="inputEmail"
                     value={this.state.email}
-                    onChange={this.onChangeLoginEmail}
                     placeholder="Ingresa tu email"
+                    onChange={this.onChangeLoginEmail}
                   />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="inputLoginPass">
                   <Form.Label>Contraseña</Form.Label>
                   <Form.Control
                     type="password"
+                    name="inputPass"
                     value={this.state.pass}
-                    onChange={this.onChangeLoginPass}
                     placeholder="Ingresa tu contraseña"
+                    onChange={this.onChangeLoginPass}
                   />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="inputLoginCheckbox">
@@ -73,6 +139,9 @@ export default class Login extends Component {
                 >
                   Ingresar
                 </Button>
+                <Alert variant={this.state.alert.alertVariant}>
+                  {this.state.alert.alertMessage}
+                </Alert>
               </Form>
             </Col>
           </Row>
