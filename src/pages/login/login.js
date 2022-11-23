@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import "./login.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default class Login extends Component {
   constructor(props) {
@@ -29,6 +30,38 @@ export default class Login extends Component {
     this.setState({ pass: e.target.value });
   }
 
+  stateAlertMessage(alertMess, alertVar) {
+    this.setState({
+      alert: {
+        alertMessage: alertMess,
+        alertVariant: alertVar,
+      },
+    });
+    setTimeout(() => {
+      this.setState({
+        alert: {
+          alertMessage: "",
+          alertVariant: "",
+        },
+      });
+    }, 5000);
+  }
+
+  login(user) {
+    return axios
+      .post("http://localhost:4000/users/login", user)
+      .then((res) => {
+        localStorage.setItem("utoken", res.data);
+        this.stateAlertMessage("Login exitoso", "success");
+        return res.data;
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+        let errorMessage = JSON.parse(JSON.stringify(err.response.data));
+        this.stateAlertMessage(errorMessage.error, "danger");
+      });
+  }
+
   onSubmit(e) {
     e.preventDefault();
 
@@ -39,59 +72,17 @@ export default class Login extends Component {
 
     if (!user.email || !user.pass) {
       console.log("Digite dados válidos!");
-      this.setState({
-        alert: {
-          alertMessage: "Complete todos los campos correctamente",
-          alertVariant: "danger",
-        },
-      });
-      setTimeout(() => {
-        this.setState({
-          alert: {
-            alertMessage: "",
-            alertVariant: "",
-          },
-        });
-      }, 5000);
+      this.stateAlertMessage(
+        "Complete todos los campos correctamente",
+        "danger"
+      );
     } else {
-      axios
-        .post("http://localhost:4000/users/login", user)
-        .then((res) => {
-          localStorage.setItem("utoken", res.data);
-          this.setState({
-            alert: {
-              alertMessage: "Login exitoso",
-              alertVariant: "success",
-            },
-          });
-          setTimeout(() => {
-            this.setState({
-              alert: {
-                alertMessage: "",
-                alertVariant: "",
-              },
-            });
-          }, 5000);
-          this.props.history.push("/");
-        })
-        .catch((err) => {
-          console.log(err.response.data);
-          let errorMessage = JSON.parse(JSON.stringify(err.response.data));
-          this.setState({
-            alert: {
-              alertMessage: "Error: " + errorMessage.err,
-              alertVariant: "danger",
-            },
-          });
-          setTimeout(() => {
-            this.setState({
-              alert: {
-                alertMessage: "",
-                alertVariant: "",
-              },
-            });
-          }, 5000);
-        });
+      this.login(user).then((res) => {
+        if (res) {
+          window.locate.replace('/')
+          console.log("Ha entrado a history");
+        }
+      });
     }
   }
 
@@ -150,3 +141,6 @@ export default class Login extends Component {
     );
   }
 }
+
+
+
