@@ -2,7 +2,6 @@ let express = require("express");
 let router = express.Router();
 let jwt = require("jsonwebtoken");
 let bcrypt = require("bcryptjs");
-const cors = require("cors");
 
 // Modelo Producto
 let userSchema = require("../models/User");
@@ -35,10 +34,7 @@ router.route("/login").post((req, res) => {
     .findOne({ email: req.body.email })
     .then((user) => {
       if (user) {
-        console.log(req.body.pass);
-        console.log(user.pass);
-
-        if (req.body.pass === user.pass) {
+        if (bcrypt.compareSync(req.body.pass, user.pass)) {
           const payload = {
             _id: user._id,
             first_name: user.firstName,
@@ -51,27 +47,48 @@ router.route("/login").post((req, res) => {
 
           res.status(200).json({ msg: "Login exitoso", token: token });
         } else {
-          res.status(400).json({ msg: "Credenciales inválidas" });
+          res.status(400).json({ error: "Credenciales inválidas" });
         }
       } else {
-        res.status(400).json({ msg: "El usuario no existe" });
+        res.status(400).json({ error: "El usuario no existe" });
       }
     })
     .catch((err) => {
-      res.status(400).json({ msg: err });
+      res.status(400).json({error: err });
     });
 });
 
 // Crear un Usuario
-router.route("/create-user").post((req, res, next) => {
-  userSchema.create(req.body, (error, data) => {
-    if (error) {
-      return next(error);
-    } else {
-      console.log(data);
-      res.json(data);
-    }
-  });
+router.route("/create-user").post((req, res) => {
+  const userData = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    pass: req.body.pass,
+  };
+
+  userSchema
+    .findOne({ email: req.body.email })
+    .then((user) => {
+      if (!user) {
+        bcrypt.hash(req.body.pass, 10, (err, hash) => {
+          userData.pass = hash;
+          userSchema
+            .create(userData)
+            .then((user) => {
+              res.status(200).json({ msg: "Usuario registrado con éxito!", user: user });
+            })
+            .catch((err) => {
+              res.status(400).json({ error: "Error de registro" });
+            });
+        });
+      } else {
+        res.status(400).json({ error: "Usuario ya registrado" });
+      }
+    })
+    .catch((err) => {
+      res.status(400).json({ error: err });
+    });
 });
 
 // Actualizar un Usuario
