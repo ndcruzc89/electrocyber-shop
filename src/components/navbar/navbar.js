@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { Container, Nav, Navbar, NavDropdown, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import "./navbar.css";
+import { withRouter } from '../../hooks/withRouter';
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faUserSecret } from "@fortawesome/free-solid-svg-icons";
 
-export default class NavBar extends Component {
+class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -14,7 +15,7 @@ export default class NavBar extends Component {
   logout(e) {
     e.preventDefault();
     localStorage.removeItem("utoken");
-    this.props.history.push("/");
+    this.props.navigate('/');;
   }
 
   render() {
@@ -89,3 +90,5 @@ export default class NavBar extends Component {
     );
   }
 }
+
+export default withRouter(NavBar);

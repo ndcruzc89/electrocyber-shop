@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import "./login.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { withRouter } from "../../hooks/withRouter";
 
-export default class Login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 
@@ -79,8 +79,10 @@ export default class Login extends Component {
     } else {
       this.login(user).then((res) => {
         if (res) {
-          window.locate.replace('/')
-          console.log("Ha entrado a history");
+          setTimeout(() => {
+            this.props.navigate("/");
+            console.log("Ha entrado a history");
+          }, 5000);
         }
       });
     }
@@ -142,5 +144,4 @@ export default class Login extends Component {
   }
 }
 
-
-
+export default withRouter(Login);
