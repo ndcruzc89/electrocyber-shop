@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { Container, Row, Col, Card, Badge, Button } from "react-bootstrap";
 import "./products.css";
+import axios from "axios";
 
 import Hero from "../../components/hero/hero";
 // import productData from "./productData";
@@ -9,6 +9,7 @@ import Hero from "../../components/hero/hero";
 export default class Products extends Component {
   constructor(props) {
     super(props);
+    this.addCart = this.addCart.bind(this);
     this.state = {
       products: [],
     };
@@ -27,6 +28,19 @@ export default class Products extends Component {
       });
   }
 
+  addCart(item) {
+    const cartObject = {
+      name: item.name,
+      img: item.img,
+      quantity: 1,
+      price: item.price,
+    };
+
+    axios
+      .post("http://localhost:4000/cart/add-product-cart", cartObject)
+      .then((res) => console.log(res.data));
+  }
+
   render() {
     return (
       <>
@@ -38,26 +52,31 @@ export default class Products extends Component {
             <h2>Productos</h2>
             <Row>
               {React.Children.toArray(
-                this.state.products.map((item) => (
+                this.state.products.map((product) => (
                   <Col sm="3" className="d-flex align-items-stretch">
-                    <Card key={item._id} className="mb-5 me-3">
+                    <Card key={product._id} className="mb-5 me-3">
                       <Card.Img
                         variant="top"
-                        src={item.img}
+                        src={product.img}
                         className="img-fluid"
                       />
                       <Card.Body className="d-flex flex-column">
                         <Card.Title className="product-name">
-                          {item.name}
+                          {product.name}
                         </Card.Title>
-                        <Card.Text>{item.description}</Card.Text>
+                        <Card.Text>{product.description}</Card.Text>
                         <Card.Text className="mt-auto">
                           <Badge pill bg="" className="product-price">
-                            {item.price}
-                            <span> {item.currency}</span>
+                            {product.price}
+                            <span> {product.currency}</span>
                           </Badge>
                         </Card.Text>
-                        <Button variant="dark">Añadir al carrito</Button>
+                        <Button
+                          variant="dark"
+                          onClick={() => this.addCart(product)}
+                        >
+                          Añadir al carrito
+                        </Button>
                       </Card.Body>
                     </Card>
                   </Col>
