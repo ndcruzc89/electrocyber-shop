@@ -15,7 +15,7 @@ router.route("/").get((req, res, next) => {
   });
 });
 
-// Obtener un producto en el Carrito
+// Obtener un producto del Carrito
 router.route("/get-product-cart/:id").get((req, res, next) => {
   cartSchema.findById(req.params.id, (error, data) => {
     if (error) {

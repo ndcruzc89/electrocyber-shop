@@ -12,9 +12,7 @@ import {
 import "./cart.css";
 import axios from "axios";
 
-// import cartData from "./cartData";
-
-export default class Cart extends Component {
+export default  class Cart extends Component {
   constructor(props) {
     super(props);
     this.deleteCart = this.deleteCart.bind(this);
@@ -37,8 +35,8 @@ export default class Cart extends Component {
   }
 
   updateCart(item, option) {
-    if (option == "increase") item.quantity++;
-    if (option == "decrease") item.quantity--;
+    if (option === "increase") item.quantity++;
+    if (option === "decrease") item.quantity--;
 
     const cartObject = {
       name: item.name,
@@ -54,6 +52,7 @@ export default class Cart extends Component {
       )
       .then((res) => {
         console.log(res.data);
+        window.location.replace('');
         console.log("Producto actualizado en el carrito con éxito");
       })
       .catch((error) => {
@@ -65,6 +64,7 @@ export default class Cart extends Component {
     axios
       .delete("http://localhost:4000/cart/delete-product-cart/" + item._id)
       .then((res) => {
+        window.location.replace('');
         console.log("Producto eliminado del carrito de compras!");
       })
       .catch((error) => {
@@ -72,13 +72,13 @@ export default class Cart extends Component {
       });
   }
 
-  // total(){
-  //   let totalCart = 0;
-  //   this.cartProducts.map((item) => (
-  //     totalCart += item.quantity * item.price
-  //   ))
-  //   return totalCart;
-  // }
+  total(){
+    const initialValue = 0;
+     return this.state.cartProducts.reduce(
+      (accumulator, currentValue) => accumulator + (currentValue.quantity * currentValue.price),
+      initialValue
+    );
+  }
 
   render() {
     return (
@@ -159,7 +159,7 @@ export default class Cart extends Component {
           <Row className="align-items-center">
             <Col sm={{ offset: 8 }}>
               <Badge pill bg="" className="cart-total">
-                <h6>Total: 54000</h6>
+                <h6>Total: {this.total()}</h6>
               </Badge>
             </Col>
             <Col>
@@ -171,3 +171,4 @@ export default class Cart extends Component {
     );
   }
 }
+

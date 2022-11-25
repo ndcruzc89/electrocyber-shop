@@ -4,14 +4,15 @@ import "./products.css";
 import axios from "axios";
 
 import Hero from "../../components/hero/hero";
-// import productData from "./productData";
 
 export default class Products extends Component {
   constructor(props) {
     super(props);
     this.addCart = this.addCart.bind(this);
     this.state = {
+      counter: 0,
       products: [],
+      cartProducts: [],
     };
   }
 
@@ -35,10 +36,11 @@ export default class Products extends Component {
       quantity: 1,
       price: item.price,
     };
-
     axios
       .post("http://localhost:4000/cart/add-product-cart", cartObject)
       .then((res) => console.log(res.data));
+    console.log("añadido al carrito");
+    console.log(this.state.counter);
   }
 
   render() {
