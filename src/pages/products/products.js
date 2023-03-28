@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Container, Row, Col, Card, Badge, Button } from "react-bootstrap";
 import "./products.css";
 import axios from "axios";
+import config from './config';
 
 import Hero from "../../components/hero/hero";
 
@@ -18,7 +19,7 @@ export default class Products extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:4000/products/")
+      .get(`${config.API_URL}/products/`)
       .then((res) => {
         this.setState({
           products: res.data,
@@ -37,7 +38,7 @@ export default class Products extends Component {
       price: item.price,
     };
     axios
-      .post("http://localhost:4000/cart/add-product-cart", cartObject)
+      .post(`${config.API_URL}/cart/add-product-cart`, cartObject)
       .then((res) => console.log(res.data));
     console.log("añadido al carrito");
     console.log(this.state.counter);

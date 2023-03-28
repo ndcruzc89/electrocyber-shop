@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import "./cart.css";
 import axios from "axios";
+import config from './config';
 
 export default  class Cart extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ export default  class Cart extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:4000/cart/")
+      .get(`${config.API_URL}/cart/`)
       .then((res) => {
         this.setState({
           cartProducts: res.data,
@@ -46,7 +47,7 @@ export default  class Cart extends Component {
     };
     axios
       .put(
-        "http://localhost:4000/cart/update-product-cart/" +
+        `${config.API_URL}/cart/update-product-cart/` +
           item._id,
         cartObject
       )
@@ -62,7 +63,7 @@ export default  class Cart extends Component {
 
   deleteCart(item) {
     axios
-      .delete("http://localhost:4000/cart/delete-product-cart/" + item._id)
+      .delete(`${config.API_URL}/cart/delete-product-cart/` + item._id)
       .then((res) => {
         window.location.replace('');
         console.log("Producto eliminado del carrito de compras!");

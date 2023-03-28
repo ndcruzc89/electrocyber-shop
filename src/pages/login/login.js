@@ -3,6 +3,7 @@ import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import "./login.css";
 import axios from "axios";
 import { withRouter } from "../../hooks/withRouter";
+import config from './config';
 
 class Login extends Component {
   constructor(props) {
@@ -49,7 +50,7 @@ class Login extends Component {
 
   login(user) {
     return axios
-      .post("http://localhost:4000/users/login", user)
+      .post(`${config.API_URL}/users/login`, user)
       .then((res) => {
         localStorage.setItem("utoken", res.data);
         this.stateAlertMessage("Login exitoso", "success");

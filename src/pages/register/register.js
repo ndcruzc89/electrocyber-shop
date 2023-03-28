@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import "./register.css";
 import axios from "axios";
+import config from './config';
 
 export default class Register extends Component {
   constructor(props) {
@@ -138,7 +139,7 @@ export default class Register extends Component {
     };
 
     axios
-      .post("http://localhost:4000/users/create-user", registerObject)
+      .post(`${config.API_URL}/users/create-user`, registerObject)
       .then((res) => {
         console.log(res.data);
         this.setState({
