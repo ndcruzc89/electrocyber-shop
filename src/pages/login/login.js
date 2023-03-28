@@ -3,7 +3,7 @@ import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import "./login.css";
 import axios from "axios";
 import { withRouter } from "../../hooks/withRouter";
-import config from './config';
+import config from '../../config/config';
 
 class Login extends Component {
   constructor(props) {

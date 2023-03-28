@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Container, Row, Col, Card, Badge, Button } from "react-bootstrap";
 import "./products.css";
 import axios from "axios";
-import config from './config';
+import config from '../../config/config';
 
 import Hero from "../../components/hero/hero";
 
@@ -18,6 +18,7 @@ export default class Products extends Component {
   }
 
   componentDidMount() {
+    console.log(config.API_URL);
     axios
       .get(`${config.API_URL}/products/`)
       .then((res) => {

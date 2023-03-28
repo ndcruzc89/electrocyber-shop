@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import "./register.css";
 import axios from "axios";
-import config from './config';
+import config from '../../config/config';
 
 export default class Register extends Component {
   constructor(props) {
