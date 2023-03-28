@@ -4,12 +4,12 @@ let cors = require("cors");
 let bodyParser = require("body-parser");
 
 // Rutas de Express
-const productRoute = require("../backend/routes/product.route");
-const userRoute = require("../backend/routes/user.route");
-const cartRoute = require("../backend/routes/cart.route");
+const productRoute = require("./routes/product.route");
+const userRoute = require("./routes/user.route");
+const cartRoute = require("./routes/cart.route");
 
 // Base de datos
-const db = require("../backend/database/db").mongoURI;
+const db = require("./database/db").mongoURI;
 
 // Conexión a MongoDB
 mongoose
