@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# ELECTROCYBER-SHOP
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## ¿Qué es ElectroCyber-Shop?
+Este proyecto consiste en un Ecommerce de productos electrónicos, los cuales el cliente podrá comprar a cualquier hora y desde casa. El objetivo es que pueda navegar, buscar los productos y realizar la compra por la plataforma de una manera óptima y rápida; y también que pueda recibir el pedido de una manera fácil, confiable, segura y con la mejor calidad. Además, el cliente podrá contactar para solicitar tanto ayuda con dudas que tenga acerca de los productos y ayuda que necesite con los proyectos de electrónica, para así brindarle la mejor solución que esté al alcance. 
 
-## Available Scripts
+El proyecto está dividido en las siguientes interfaces:
+- Interfaz de Inicio: es la interfaz principal donde el usuario podrá ver las ventajas de usar este Ecommerce.
+- Interfaz Sobre Nosotros: es la interfaz donde se menciona de qué trata y cuál es el objetivo de este Ecommerce de productos electrónicos.
+- Interfaz de Productos: es la interfaz donde el usuario podrá ver todos los productos y también podrá añadirlos al carrito de compras. 
+- Interfaz de Contáctenos: es la interfaz donde el usuario podrá contactar para preguntar por dudas que tenga acerca de los productos o para solicitar ayuda con los los proyectos de electrónica que tenga. 
+- Interfaz de Ingresar: es la interfaz donde el usuario podrá ingresar a la plataforma con su usuario o correo y contraseña, para que así pueda realizar la compra. 
+- Interfaz de Registrarse: es la interfaz donde el usuario podrá diligenciar los datos de registro, para luego acceder a la plataforma. 
+- Interfaz de Carrito de compras: es la interfaz donde el usuario podrá ver los productos que ha añadido, podrá modificar su cantidad y también podrá eliminarlos del carrito de compras. 
 
-In the project directory, you can run:
+---
+## Requerimientos
+### Frontend:
+- Node.js (Recomendada: vs 16.18.0)
+- Biblioteca de React (Recomendada: vs 18.2.0)
+- Extensión de Google Chrome de React Developer Tools. 
 
-### `npm start`
+### Backend:
+- Node.js (Recomendada: vs 16.18.0)
+- Express (Se instala en las dependencias)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
+## Instalación
+- Abrir la consola de comandos y:
+  - Clonar el repositorio con el comando ***git clone https://github.com/ndcruzc89/electrocyber-shop***
+### Frontend:
+- Por medio de la consola de comandos:
+  - Navegar hasta la carpeta raíz del proyecto ***electrocyber-shop***
+  - Ejecutar el comando ***npm install*** para instalar las dependencias
+  
+### Backend: 
+- Por medio de la consola de comandos:
+  - Desde la carpeta raíz del proyecto navegar hasta la carpeta ***/backend*** con el comando ***cd backend***
+  - Ejecutar el comando ***npm install*** para instalar las dependencias necesarias. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
+## Cómo ejecutar la aplicación:
+### Frontend:  
+- Desde la carpeta raíz del proyecto (***electrocyber-shop***) ejecutar el comando ***npm start***.
 
-### `npm test`
+### Backend:
+- Por medio de la consola de comandos y ubicado en la carpeta raíz del proyecto (***electrocyber-shop***):
+- Ejecutar el comando ***npm run dev*** si se quiere ejecutar el proyecto en modo de desarrollo.
+- Ejecutar el comando ***npm run prod*** si se quiere ejecutar el proyecto en modo de producción. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
+## Desarrollo de la aplicación
 
-### `npm run build`
+### Frontend:
+La documentación relacionada con el desarrollo del frontend se encuentra en la ruta ***docs\desarrollo\frontend_doc\frontend_doc.pdf***
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Backend (API):
+La documentación relacionada con el desarrollo del backend se encuentra en la ruta ***docs\desarrollo\backend_doc\backend_doc.pdf***
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Base de datos
+La documentación relacionada con el desarrollo de la base de datos se encuentra en la ruta ***docs\desarrollo\database_doc\database_doc.pdf***
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
+## ¿Cómo usar la aplicación?
+Para saber como usar la aplicación se puede consultar la siguiente ruta ***docs\uso\uso_app_doc.pdf***
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+## Autor 
+Nelson Daniel Cruz Camelo
